@@ -1,0 +1,45 @@
+{
+  "name" : "opstalent/crudbundle",
+  "description" : "Crud Bundle",
+  "type" : "symfony-bundle",
+  "authors" : [
+    {
+      "name" : "Szymon Kunowski",
+      "email" : "szymon.kunowski@opstalent.it",
+      "homepage": "https://github.com/auamarto"
+    },
+    {
+      "name" : "Patryk Grudniewski",
+      "email" : "patgrudniewski@gmail.com",
+      "homepage": "https://github.com/patgrudniewski"
+    }
+  ],
+  "keywords" : [
+    "symfony 3.4", "crud"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+  },
+  "require-dev" : {
+  },
+  "suggest": {
+  },
+  "autoload" : {
+    "psr-0" : {
+      "Opstalent\\CrudBundle" : ""
+    },
+    "psr-4": {
+      "Opstalent\\CrudBundle\\" : ""
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "repositories" : [{
+    "type" : "vcs",
+    "url" : "https://github.com/opstalent/crud.git"
+  }]
+
+}
