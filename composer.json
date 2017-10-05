@@ -1,5 +1,5 @@
 {
-  "name" : "opstalent/crudbundle",
+  "name" : "opstalent/crud",
   "description" : "Crud Bundle",
   "type" : "symfony-bundle",
   "authors" : [
