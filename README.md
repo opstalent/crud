@@ -33,6 +33,43 @@ $bundles = [
 Documentation
 -------------
 
+####Entity Annotation
+
+Entity annotation provide easy way to define if annotated doctrine entity can is ``addable, getable, listable, editable, deletable``.
+In order to use Entity Annotation you need to add
+```php
+use Opstalent\CrudBundle\Annotation\Entity;
+
+/**
+ * Class Category
+ * @Entity(actions={"addable", "deletable"}) //Here you define available actions
+ */
+ class Category
+ {
+ }
+```
+All other actions will raise ``Doctrine\Common\Annotations\AnnotationException``.
+
+####Field Annotation
+
+Field annotation provide east way to define if assigned property can be modified on ``addable, getable, listable, editable`` action.
+
+```php
+use Opstalent\CrudBundle\Annotation\Field;
+
+ /**
+ * Class Category
+ */
+ class Category
+ {
+    /**
+    * @Field(actions={"addable", "editable"}) //Here you define available actions
+    */
+    protected $name;
+ }
+```
+All other actions will raise ``Doctrine\Common\Annotations\AnnotationException``.
+
 ----------
 
 License
