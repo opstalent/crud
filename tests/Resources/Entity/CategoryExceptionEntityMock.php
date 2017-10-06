@@ -7,6 +7,7 @@
 namespace Opstalent\CrudBundle\Tests\Resources\Entity;
 
 use Opstalent\CrudBundle\Annotation\Entity;
+use Opstalent\CrudBundle\Annotation\Field;
 
 /**
  * Class CategoryExceptionEntityMock
@@ -15,5 +16,8 @@ use Opstalent\CrudBundle\Annotation\Entity;
  */
 class CategoryExceptionEntityMock
 {
+    /**
+     * @Field(actions={"deletable"})
+     */
     protected $id;
 }
