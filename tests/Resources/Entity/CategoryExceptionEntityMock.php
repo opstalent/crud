@@ -11,7 +11,7 @@ use Opstalent\CrudBundle\Annotation\Entity;
 /**
  * Class CategoryExceptionEntityMock
  * @package Opstalent\CrudBundle
- * @Entity(actions={"wrong_value"})
+ * @Entity(actions={"Wrong"})
  */
 class CategoryExceptionEntityMock
 {

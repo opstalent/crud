@@ -7,13 +7,16 @@
 namespace Opstalent\CrudBundle\Annotation\Traits;
 
 use Doctrine\Common\Annotations\AnnotationException;
+
 /**
  * Trait ActionTrait
  * @package Opstalent\CrudBundle
  */
-trait ActionTrait {
+trait ActionTrait
+{
 
     protected $availableActions = ['addable', 'getable', 'listable', 'editable'];
+
     /**
      * @return array
      */
@@ -22,17 +25,32 @@ trait ActionTrait {
         return $this->availableActions;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return int
+     */
     protected function addAvailableAction(string $name): int
     {
         return array_push($this->availableActions, $name);
     }
 
     /**
-     * @param array $actions
+     * @param string $action
+     *
      * @return bool
      */
-    protected function isAvailableActions(array $actions): bool
+    protected function isActionAvailable(string $action): bool
     {
-        return !array_diff($actions, $this->getAvailableActions());
+        if(in_array($action, $this->availableActions)) {
+            return true;
+        }
+
+        throw AnnotationException::semanticalError(
+            sprintf(
+                'The annotation action "%s" is not available.',
+                $action
+            )
+        );
     }
 }

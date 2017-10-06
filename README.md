@@ -1,4 +1,4 @@
-Crud Bundle
+Crud Bundle [![Build Status](https://travis-ci.org/auamarto/crud-bundle.svg?branch=master)](https://travis-ci.org/auamarto/crud-bundle)
 ===================
 
 
