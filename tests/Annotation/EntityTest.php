@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: szymon
- * Date: 05.10.17
- * Time: 13:26
+ * @author Szyon Kunowski <szymon.kunowski@gmail.com>
  */
 
 namespace Opstalent\CrudBundle\Tests\Annotation;

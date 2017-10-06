@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Szyon Kunowski <szymon.kunowski@gmail.com>
+ */
+
 namespace Opstalent\CrudBundle\Annotation\Traits;
 
 use Doctrine\Common\Annotations\AnnotationException;

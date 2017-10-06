@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Szyon Kunowski <szymon.kunowski@gmail.com>
+ */
+
 namespace Opstalent\CrudBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
