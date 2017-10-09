@@ -91,6 +91,4 @@ trait ActionTrait
         if ($this->isActionAvailable($action)) array_push($this->actions, $action);
         return $this;
     }
-
-
 }

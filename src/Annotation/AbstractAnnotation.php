@@ -6,6 +6,10 @@
 
 namespace Opstalent\CrudBundle\Annotation;
 
+/**
+ * Class AbstractAnnotation
+ * @package Opstalent\CrudBundle
+ */
 abstract class AbstractAnnotation
 {
     abstract protected function getAvailableActions(): array;

@@ -24,7 +24,7 @@ class EntityTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function entityAnnotationHaveAnnotationAnnotation()
+    public function isProperAnnotation()
     {
         $entityAnnotation = new \ReflectionClass(Entity::class);
         $this->assertContains("@Annotation", $entityAnnotation->getDocComment());
@@ -35,7 +35,7 @@ class EntityTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function entityAnnotationHaveTargetAnnotation()
+    public function annotationHasClassTarget()
     {
         $entityAnnotation = new \ReflectionClass(Entity::class);
         $this->assertContains("@Target(\"CLASS\")", $entityAnnotation->getDocComment());
@@ -92,7 +92,7 @@ class EntityTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function actionWrongInEntityThrowAnnotationException()
+    public function actionWrongThrowAnnotationException()
     {
         $reader = new AnnotationReader();
         $this->expectException(AnnotationException::class);

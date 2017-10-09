@@ -24,7 +24,7 @@ class FieldTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function entityAnnotationHaveAnnotationAnnotation()
+    public function isProperAnnotation()
     {
         $entityAnnotation = new \ReflectionClass(Field::class);
         $this->assertContains("@Annotation", $entityAnnotation->getDocComment());
@@ -35,7 +35,7 @@ class FieldTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function entityAnnotationHaveTargetAnnotation()
+    public function annotationHasClassTarget()
     {
         $entityAnnotation = new \ReflectionClass(Field::class);
         $this->assertContains("@Target(\"PROPERTY\")", $entityAnnotation->getDocComment());
@@ -99,7 +99,7 @@ class FieldTest extends TestCase
      * @group Annotation
      * @test
      */
-    public function actionWrongInEntityThrowAnnotationException()
+    public function actionWrongThrowAnnotationException()
     {
         $reader = new AnnotationReader();
         $this->expectException(AnnotationException::class);
