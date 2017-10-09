@@ -8,6 +8,7 @@ namespace Opstalent\CrudBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 use Opstalent\CrudBundle\Annotation\Traits\ActionTrait;
+use Opstalent\CrudBundle\Annotation\AbstractAnnotation;
 
 /**
  * Class Entity
@@ -15,16 +16,9 @@ use Opstalent\CrudBundle\Annotation\Traits\ActionTrait;
  * @Annotation
  * @Target("CLASS")
  */
-class Entity
+class Entity extends AbstractAnnotation
 {
     use ActionTrait;
-
-    /**
-     * @var string[]
-     * @Required
-     * @AnnotatedDescription("The property holds all available actions for class")
-     */
-    public $actions = [];
 
     /**
      * Entity constructor.
@@ -34,21 +28,6 @@ class Entity
     public function __construct(array $data)
     {
         $this->addAvailableAction("deletable");
-        if (array_key_exists("actions", $data)) {
-            foreach ($data['actions'] as $action) {
-                $this->addAction($action);
-            }
-        }
-    }
-
-    /**
-     * @param string $action
-     *
-     * @return Entity
-     */
-    public function addAction(string $action): Entity
-    {
-        if ($this->isActionAvailable($action)) array_push($this->actions, $action);
-        return $this;
+        $this->extractActions("actions", $data);
     }
 }
