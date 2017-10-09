@@ -28,6 +28,6 @@ class Entity extends AbstractAnnotation
     public function __construct(array $data)
     {
         $this->addAvailableAction("deletable");
-        $this->extractActions("actions", $data);
+        $this->setActions("actions", $data);
     }
 }

@@ -27,6 +27,6 @@ class Field extends AbstractAnnotation
      */
     public function __construct(array $data)
     {
-        $this->extractActions("actions", $data);
+        $this->setActions("actions", $data);
     }
 }

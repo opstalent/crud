@@ -28,7 +28,7 @@ trait ActionTrait
      */
     protected $availableActions = ['addable', 'getable', 'listable', 'editable'];
 
-    protected function extractActions(string $key, array $data): array
+    protected function setActions(string $key, array $data): array
     {
         if (array_key_exists($key, $data)) {
             foreach ($data[$key] as $action) {
