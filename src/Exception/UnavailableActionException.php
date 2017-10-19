@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Exceptions;
+namespace Opstalent\CrudBundle\Exception;
 
 use Throwable;
 

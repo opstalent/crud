@@ -3,6 +3,7 @@
 namespace Opstalent\CrudBundle\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Opstalent\CrudBundle\Tests\Constraint\Annotation;
 
 /**
  * Class AnnotationTestCase
@@ -17,6 +18,6 @@ class AnnotationTestCase extends TestCase
      */
     public static function assertIsAnnotation(string $class, $message = "")
     {
-        self::assertThat($class, new AnnotationConstraint(), $message);
+        self::assertThat($class, new Annotation(), $message);
     }
 }

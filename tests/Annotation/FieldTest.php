@@ -3,7 +3,7 @@
 namespace Opstalent\CrudBundle\Tests\Annotation;
 
 use Opstalent\CrudBundle\Annotation\Field;
-use Opstalent\CrudBundle\Exceptions\UnavailableActionException;
+use Opstalent\CrudBundle\Exception\UnavailableActionException;
 use Opstalent\CrudBundle\Tests\AnnotationTestCase;
 use Opstalent\CrudBundle\Tests\Resources\Entity\CategoryEntityMock;
 

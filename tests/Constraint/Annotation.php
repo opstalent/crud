@@ -1,8 +1,8 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests;
+namespace Opstalent\CrudBundle\Tests\Constraint;
 
-use Doctrine\Common\Annotations\Annotation;
+use Doctrine\Common\Annotations\Annotation as DoctrineAnnotation;
 use Doctrine\Common\Annotations\DocParser;
 use PHPUnit\Framework\Constraint\Constraint;
 
@@ -11,19 +11,19 @@ use PHPUnit\Framework\Constraint\Constraint;
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
  * @package Opstalent\CrudBundle
  */
-class AnnotationConstraint extends Constraint
+class Annotation extends Constraint
 {
     /**
      * @param mixed $class
      * @return bool
      */
-    public function matches($class)
+    public function matches($class): bool
     {
         $reflection = new \ReflectionClass($class);
         $docParser = $this->prepareDocParser();
         $annot = $docParser->parse($reflection->getDocComment(), 'class ' . $reflection->getName());
         foreach ($annot as $annotation) {
-            if ($annotation instanceof Annotation\Target) {
+            if ($annotation instanceof DoctrineAnnotation\Target) {
                 return true;
             }
         }
@@ -36,9 +36,9 @@ class AnnotationConstraint extends Constraint
      *
      * @return string
      */
-    public function toString()
+    public function toString(): string
     {
-        return sprintf('is proper %s', Annotation::class);
+        return sprintf('is proper %s', DoctrineAnnotation::class);
     }
 
     /**
@@ -49,8 +49,8 @@ class AnnotationConstraint extends Constraint
         $docParser = new DocParser();
         $docParser->setIgnoreNotImportedAnnotations(true);
         $docParser->setIgnoredAnnotationNames(['Annotation' => false]);
-        $docParser->setIgnoredAnnotationNamespaces([Annotation::class => false]);
-        $docParser->addNamespace(Annotation::class);
+        $docParser->setIgnoredAnnotationNamespaces([DoctrineAnnotation::class => false]);
+        $docParser->addNamespace(DoctrineAnnotation::class);
         return $docParser;
     }
 }

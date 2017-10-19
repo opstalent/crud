@@ -3,7 +3,7 @@
 namespace Opstalent\CrudBundle\Tests\Annotation;
 
 use Opstalent\CrudBundle\Annotation\Entity;
-use Opstalent\CrudBundle\Exceptions\UnavailableActionException;
+use Opstalent\CrudBundle\Exception\UnavailableActionException;
 use Opstalent\CrudBundle\Tests\AnnotationTestCase;
 
 /**

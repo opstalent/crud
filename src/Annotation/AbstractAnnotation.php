@@ -3,7 +3,7 @@
 namespace Opstalent\CrudBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation\Required;
-use Opstalent\CrudBundle\Exceptions\UnavailableActionException;
+use Opstalent\CrudBundle\Exception\UnavailableActionException;
 
 /**
  * Class AbstractAnnotation
