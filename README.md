@@ -1,7 +1,7 @@
 Crud Bundle
 ===================
 
-[![Build Status](https://travis-ci.org/auamarto/crud-bundle.svg?branch=master)](https://travis-ci.org/auamarto/crud-bundle)
+[![Build Status](https://travis-ci.org/opstalent/crud.svg?branch=master)](https://travis-ci.org/opstalent/crud)
 [![Coverage Status](https://coveralls.io/repos/github/opstalent/crud/badge.svg?branch=master)](https://coveralls.io/github/opstalent/crud?branch=master)
 
 This bundle provides basic CRUD functionality. We provide simple entity annotations to create forms on the fly.
