@@ -3,6 +3,9 @@ language: php
 php:
   - 7.1
 
+git:
+  depth: 1
+
 cache:
   directories:
     - $HOME/.composer/cache
@@ -18,7 +21,7 @@ before_script:
   - ls -al
 
 script:
-  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml --configuration phpunit.xml
 
 after_success:
 # Submit coverage report to Coveralls servers, see .coveralls.yml
