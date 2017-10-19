@@ -3,7 +3,6 @@
 namespace Opstalent\CrudBundle\Tests\Annotation;
 
 use Opstalent\CrudBundle\Annotation\Field;
-use Opstalent\CrudBundle\Exception\UnavailableActionException;
 use Opstalent\CrudBundle\Tests\AnnotationTestCase;
 use Opstalent\CrudBundle\Tests\Resources\Entity\CategoryEntityMock;
 
@@ -43,7 +42,6 @@ class FieldTest extends AnnotationTestCase
      */
     public function fieldReturnAllCorrectActionForGivenOptions()
     {
-        $this->expectException(UnavailableActionException::class);
         $actions = ['addable', 'getable', 'listable', 'editable', 'adorable'];
         $field = new Field(['actions' => $actions]);
         $this->assertNotEquals($actions, $field->getActions());

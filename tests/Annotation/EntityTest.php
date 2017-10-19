@@ -3,7 +3,6 @@
 namespace Opstalent\CrudBundle\Tests\Annotation;
 
 use Opstalent\CrudBundle\Annotation\Entity;
-use Opstalent\CrudBundle\Exception\UnavailableActionException;
 use Opstalent\CrudBundle\Tests\AnnotationTestCase;
 
 /**
@@ -42,7 +41,6 @@ class EntityTest extends AnnotationTestCase
      */
     public function entityReturnAllCorrectActionForGivenOptions()
     {
-        $this->expectException(UnavailableActionException::class);
         $actions = ['addable', 'getable', 'listable', 'editable', 'deletable', 'adorable'];
         $entity = new Entity(['actions' => $actions]);
         $this->assertNotEquals($actions, $entity->getActions());
