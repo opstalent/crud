@@ -1,0 +1,5 @@
+services:
+    opstalent.form_factory.service:
+        class: 'Opstalent\CrudBundle\Service\FormFactory'
+        arguments:
+            - '@form.factory'

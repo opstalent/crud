@@ -4,6 +4,8 @@ namespace Opstalent\CrudBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\Common\Annotations\Annotation\Target;
+use Opstalent\CrudBundle\Traits\ActionTrait;
+use Opstalent\CrudBundle\Traits\AvailableActionTrait;
 
 /**
  * Class Field
@@ -13,8 +15,11 @@ use Doctrine\Common\Annotations\Annotation\Target;
  * @Annotation
  * @Target("PROPERTY")
  */
-class Field extends AbstractAnnotation
+class Field
 {
+    use ActionTrait;
+    use AvailableActionTrait;
+
     /**
      * Entity constructor.
      *
@@ -28,6 +33,6 @@ class Field extends AbstractAnnotation
             'listable',
             'editable'
         ]);
-        $this->setActions($data);
+        $this->setActions($data['actions']);
     }
 }

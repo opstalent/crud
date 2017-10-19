@@ -4,6 +4,8 @@ namespace Opstalent\CrudBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\Common\Annotations\Annotation\Target;
+use Opstalent\CrudBundle\Traits\ActionTrait;
+use Opstalent\CrudBundle\Traits\AvailableActionTrait;
 
 /**
  * Class Entity
@@ -13,8 +15,11 @@ use Doctrine\Common\Annotations\Annotation\Target;
  * @Annotation
  * @Target("CLASS")
  */
-class Entity extends AbstractAnnotation
+class Entity
 {
+    use ActionTrait;
+    use AvailableActionTrait;
+
     /**
      * Entity constructor.
      *
@@ -29,6 +34,6 @@ class Entity extends AbstractAnnotation
             'editable',
             'deletable'
         ]);
-        $this->setActions($data);
+        $this->setActions($data['actions']);
     }
 }
