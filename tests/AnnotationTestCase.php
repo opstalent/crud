@@ -2,8 +2,8 @@
 
 namespace Opstalent\CrudBundle\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Opstalent\CrudBundle\Tests\Constraint\Annotation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AnnotationTestCase
