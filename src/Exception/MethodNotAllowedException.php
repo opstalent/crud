@@ -2,12 +2,15 @@
 
 namespace Opstalent\CrudBundle\Exception;
 
+use Throwable;
+use LogicException;
+
 /**
- * Class NotAllowedMethodException
+ * Class MethodNotAllowedException
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
  * @package Opstalent\CrudBundle
  */
-class MethodNotAllowedException extends \LogicException implements Exception
+class MethodNotAllowedException extends LogicException implements Exception
 {
     /**
      * NotAllowedMethodException constructor.

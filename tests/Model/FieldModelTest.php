@@ -67,7 +67,7 @@ class FieldModelTest extends TestCase
      * @group FormFactory
      * @test
      */
-    public function throwingTypeNotAllowedExceptionWhenSetingNotAllowedType()
+    public function throwingTypeNotAllowedExceptionWhenSettingNotAllowedType()
     {
         $this->expectException(TypeNotAllowedException::class);
         $model = new Field();

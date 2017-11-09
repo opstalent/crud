@@ -35,9 +35,6 @@ trait AvailableActionTrait
      */
     protected function isActionAvailable(string $action): bool
     {
-        if (in_array($action, $this->availableActions)) {
-            return true;
-        }
-        return false;
+        return in_array($action, $this->availableActions);
     }
 }

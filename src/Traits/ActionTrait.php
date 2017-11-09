@@ -2,8 +2,6 @@
 
 namespace Opstalent\CrudBundle\Traits;
 
-use Opstalent\CrudBundle\Annotations\AbstractAnnotation;
-
 /**
  * Trait ActionTrait
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
@@ -19,17 +17,16 @@ trait ActionTrait
     public $actions = [];
 
     /**
-     * @param string $key
      * @param array $data
-     * @return array
+     * @return $this
      */
-    protected function setActions(array $data): array
+    protected function setActions(array $data)
     {
         foreach ($data as $action) {
             $this->addAction($action);
         }
 
-        return $this->getActions();
+        return $this;
     }
 
     /**
@@ -47,7 +44,7 @@ trait ActionTrait
     protected function addAction(string $action)
     {
         if ($this->isActionAvailable($action)) {
-            array_push($this->actions, $action);
+            $this->actions[] = $action;
         }
         return $this;
     }

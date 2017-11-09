@@ -3,13 +3,14 @@
 namespace Opstalent\CrudBundle\Exception;
 
 use Throwable;
+use LogicException;
 
 /**
- * Class UnavailableActionException
+ * Class ActionUnavailableException
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
  * @package Opstalent\CrudBundle\Exception
  */
-class ActionUnavailableException extends \LogicException implements Exception
+class ActionUnavailableException extends LogicException implements Exception
 {
     /**
      * UnavailableActionException constructor.
@@ -17,7 +18,7 @@ class ActionUnavailableException extends \LogicException implements Exception
      * @param int $code
      * @param Throwable|null $previous
      */
-    public function __construct($message = "Unavailable Acition", $code = 0, Throwable $previous = null)
+    public function __construct($message = "Unavailable Action", $code = 0, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
     }

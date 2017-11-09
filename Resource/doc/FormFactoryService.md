@@ -12,12 +12,13 @@ Converts [`Form`](../../src/Model/Form.php) Model (with array of [`Field`](../..
 
  - ``public function createForm(Form $formModel): FormInterface``
  
-    Provides Symfony [`Form`](https://github.com/symfony/form/blob/master/Form.php) from [`Form`](../../src/Model/Form.php) Model. This method use parse & getForm together for user convenience.
+    Provides Symfony [`Form`](https://github.com/symfony/form/blob/master/Form.php) from [`Form`](../../src/Model/Form.php) Model. 
+    This method use parse & getForm together for user convenience.
     
  - ``protected function parse(Form $formModel): FormFactory``
  
     Use Symfony [`FormBuilder`](https://github.com/symfony/form/blob/master/FormBuilder.php) and [`Form`](../../src/Model/Form.php) Model to create Form with fields inside builder. 
-    This function set form method and add all fieldss to form.
+    This function set form method and add all fields to form.
     
  - ``protected function addField(Field $fieldModel): FormFactory``
  

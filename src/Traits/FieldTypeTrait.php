@@ -17,9 +17,6 @@ trait FieldTypeTrait
      */
     protected function isTypeAvailable(string $type): bool
     {
-        if (is_subclass_of(new $type(), FormTypeInterface::class)) {
-            return true;
-        }
-        return false;
+        return is_subclass_of(new $type(), FormTypeInterface::class);
     }
 }

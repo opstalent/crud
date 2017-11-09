@@ -58,6 +58,7 @@ class Field
     /**
      * @param string $type
      * @return Field
+     * @throws TypeNotAllowedException
      */
     public function setType(string $type): Field
     {

@@ -25,7 +25,7 @@ class Form
     protected $action = '';
 
     /**
-     * @var FieldModel[]
+     * @var Field[]
      */
     protected $fields = [];
 
@@ -74,7 +74,7 @@ class Form
     /**
      * @return Field[]
      */
-    public function getFields()
+    public function getFields(): array
     {
         return $this->fields;
     }

@@ -1,10 +1,9 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests\Annotation;
+namespace Opstalent\CrudBundle\Tests\Service;
 
 use Opstalent\CrudBundle\Exception\ActionUnavailableException;
 use Opstalent\CrudBundle\Exception\MethodNotAllowedException;
-use Opstalent\CrudBundle\FormFactory;
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
 use PHPUnit\Framework\TestCase;
@@ -12,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormRegistry;
 use Symfony\Component\Form\Forms;
+use Opstalent\CrudBundle\Service\FormFactory;
 
 /**
  * Class FormFactoryTest

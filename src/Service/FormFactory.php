@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle;
+namespace Opstalent\CrudBundle\Service;
 
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
@@ -8,6 +8,7 @@ use Opstalent\CrudBundle\Traits\MethodResolverTrait;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
+use Opstalent\CrudBundle\Exception\MethodNotAllowedException;
 
 /**
  * Class FormFactory
@@ -53,10 +54,15 @@ class FormFactory
     /**
      * @param Form $formModel
      * @return FormFactory
+     * @throws MethodNotAllowedException
      */
     protected function parse(Form $formModel): FormFactory
     {
-        $this->builder->setMethod($this->resolveMethod($formModel->getAction()));
+        $this->builder->setMethod(
+            $this->resolveMethod(
+                $formModel->getAction()
+            )
+        );
         foreach ($formModel->getFields() as $field) {
             $this->addField($field);
         }
@@ -69,7 +75,11 @@ class FormFactory
      */
     protected function addField(Field $fieldModel): FormFactory
     {
-        $this->builder->add($fieldModel->getName(), $fieldModel->getType(), $fieldModel->getOptions());
+        $this->builder->add(
+            $fieldModel->getName(),
+            $fieldModel->getType(),
+            $fieldModel->getOptions()
+        );
         return $this;
     }
 }
