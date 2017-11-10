@@ -3,3 +3,7 @@ services:
         class: 'Opstalent\CrudBundle\Service\FormFactory'
         arguments:
             - '@form.factory'
+    opstalent.form_config_resolver.service:
+        class: 'Opstalent\CrudBundle\Service\FormConfigResolver'
+        arguments:
+            - '@annotations.reader'
