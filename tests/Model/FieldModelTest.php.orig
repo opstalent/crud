@@ -57,7 +57,11 @@ class FieldModelTest extends TestCase
      */
     public function throwingErrorWhenSetUnavailableType()
     {
+<<<<<<< HEAD
+        $this->expectException(\Error::class);
+=======
         $this->expectException(TypeNotAllowedException::class);
+>>>>>>> c4c781eb614f8abbc4b1a2d83cef4cce5fa2a02e
         $model = new Field();
         $model->setType('wrongType');
     }

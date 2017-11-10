@@ -13,7 +13,11 @@ use LogicException;
 class ActionUnavailableException extends LogicException implements Exception
 {
     /**
+<<<<<<< HEAD
+     * UnavailableActionException constructor.
+=======
      * ActionUnavailableException constructor.
+>>>>>>> c4c781eb614f8abbc4b1a2d83cef4cce5fa2a02e
      * @param string $message
      * @param int $code
      * @param Throwable|null $previous

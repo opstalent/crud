@@ -1,0 +1,9 @@
+services:
+    opstalent.form_factory.service:
+<<<<<<< HEAD
+        class: 'Opstalent\CrudBundle\Service\FormFactory'
+=======
+        class: 'Opstalent\CrudBundle\FormFactory'
+>>>>>>> 0b1775f... dependencyInjection created
+        arguments:
+            - '@form.factory'
