@@ -99,6 +99,10 @@ All other actions will raise ``Doctrine\Common\Annotations\AnnotationException``
 
 ----------
 
+API Reference
+-------------
+[FormFactoryService](Resources/doc/FormFactoryService.md)
+
 License
 -------------
 
