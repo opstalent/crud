@@ -3,13 +3,14 @@
 namespace Opstalent\CrudBundle\Tests\Service;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\ORM\Mapping\Column;
 use Opstalent\CrudBundle\Exception\AnnotationNotDefinedException;
 use Opstalent\CrudBundle\Exception\ClassNotFoundException;
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
 use Opstalent\CrudBundle\Service\FormConfigResolver;
-use Opstalent\CrudBundle\Tests\Resource\EntityWithAnnotation;
-use Opstalent\CrudBundle\Tests\Resource\EntityWithoutColumn;
+use Opstalent\CrudBundle\Tests\Entity\EntityWithAnnotation;
+use Opstalent\CrudBundle\Tests\Entity\EntityWithoutColumn;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -62,6 +63,7 @@ class FormConfigResolverTest extends TestCase
      */
     public function getsFormModelWhenUseClassAnotatedWithFormAnnotation()
     {
+        $column = new Column(); // Needed to Use Doctrine Mapping annotations inside
         $resolver = $this->service->resolve('addable', EntityWithAnnotation::class);
         $this->assertInstanceOf(Form::class, $resolver);
     }

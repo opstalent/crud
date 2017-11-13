@@ -1,10 +1,9 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests\Resource;
+namespace Opstalent\CrudBundle\Tests\Entity;
 
 use Opstalent\CrudBundle\Annotation\Entity;
 use Opstalent\CrudBundle\Annotation\Field;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class EntityWithoutColumn
