@@ -2,9 +2,9 @@
 
 namespace Opstalent\CrudBundle\Tests\Entity;
 
+use Doctrine\ORM\Mapping\Column;
 use Opstalent\CrudBundle\Annotation\Entity;
 use Opstalent\CrudBundle\Annotation\Field;
-use Doctrine\ORM\Mapping\Column;
 
 /**
  * Class EntityWithAnnotation
