@@ -47,7 +47,7 @@
     "psr-4": {
       "Opstalent\\CrudBundle\\Tests\\" : "tests/"
     },
-    "classmap": [ "./vendor/autoload.php" ]
+    "classmap": [ "vendor/autoload.php" ]
   },
   "repositories" : [{
     "type" : "vcs",
