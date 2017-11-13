@@ -5,7 +5,11 @@ namespace Opstalent\CrudBundle\Tests\Service;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Opstalent\CrudBundle\Exception\AnnotationNotDefinedException;
 use Opstalent\CrudBundle\Exception\ClassNotFoundException;
+use Opstalent\CrudBundle\Model\Field;
+use Opstalent\CrudBundle\Model\Form;
 use Opstalent\CrudBundle\Service\FormConfigResolver;
+use Opstalent\CrudBundle\Tests\Resource\EntityWithAnnotation;
+use Opstalent\CrudBundle\Tests\Resource\EntityWithoutColumn;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -51,4 +55,41 @@ class FormConfigResolverTest extends TestCase
         $this->expectException(AnnotationNotDefinedException::class);
         $resolved = $this->service->resolve('action', \DateTime::class);
     }
+
+    /**
+     * @group FormConfigResolver
+     * @test
+     */
+    public function getsFormModelWhenUseClassAnotatedWithFormAnnotation()
+    {
+        $resolver = $this->service->resolve('addable', EntityWithAnnotation::class);
+        $this->assertInstanceOf(Form::class, $resolver);
+    }
+
+    /**
+     * @group FormConfigResolver
+     * @test
+     * @depends getsFormModelWhenUseClassAnotatedWithFormAnnotation
+     */
+    public function formModelContainsAllFieldsDefinedByFieldAnnotation()
+    {
+        $resolver = $this->service->resolve('addable', EntityWithAnnotation::class);
+        foreach ($resolver->getFields() as $field) {
+            $this->assertInstanceOf(Field::class, $field);
+        }
+    }
+
+    /**
+     * @group FormConfigResolver
+     * @test
+     */
+    public function throwsAnnotationNotDefinedExceptionWhenPropertyDontHaveAnnotationColumn()
+    {
+        $this->expectException(AnnotationNotDefinedException::class);
+        $resolver = $this->service->resolve('addable', EntityWithoutColumn::class);
+        foreach ($resolver->getFields() as $field) {
+            $this->assertInstanceOf(Field::class, $field);
+        }
+    }
+
 }

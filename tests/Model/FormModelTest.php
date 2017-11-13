@@ -31,6 +31,7 @@ class FormModelTest extends TestCase
     public function setUpField()
     {
         $this->field = new Field();
+        $this->field->setName('one');
     }
 
     /**
@@ -95,7 +96,9 @@ class FormModelTest extends TestCase
      */
     public function getFieldsReturnsProperListOfFields()
     {
-        $fields = [$this->field, $this->field];
+        $field2 = clone $this->field;
+        $field2->setName("two");
+        $fields = ["one" => $this->field, "two" => $field2];
         $this->assertInstanceOf(Form::class, $this->form->setFields($fields));
         $this->assertEquals($fields, $this->form->getFields());
     }
