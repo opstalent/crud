@@ -30,9 +30,7 @@ class AnnotationResolver
         $properties = [];
         foreach ($reflection->getProperties() as $property) {
             $field = self::getReader()->getPropertyAnnotation($property, Field::class);
-            if (
-                $field
-                && $field->isAction($action)
+            if ($field && $field->isAction($action)
             ) {
                 $column = self::getColumnAnnotation($property);
                 $properties[$property->getName()] = $column->type;

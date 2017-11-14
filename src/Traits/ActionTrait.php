@@ -55,6 +55,6 @@ trait ActionTrait
      */
     public function isAction(string $action): bool
     {
-        return in_array($action , $this->getActions());
+        return in_array($action, $this->getActions());
     }
 }
