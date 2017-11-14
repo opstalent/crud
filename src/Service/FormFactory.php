@@ -2,13 +2,13 @@
 
 namespace Opstalent\CrudBundle\Service;
 
+use Opstalent\CrudBundle\Exception\MethodNotAllowedException;
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
 use Opstalent\CrudBundle\Traits\MethodResolverTrait;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Opstalent\CrudBundle\Exception\MethodNotAllowedException;
 
 /**
  * Class FormFactory

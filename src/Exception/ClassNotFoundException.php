@@ -2,8 +2,8 @@
 
 namespace Opstalent\CrudBundle\Exception;
 
-use Throwable;
 use LogicException;
+use Throwable;
 
 /**
  * Class ClassNotFoundException

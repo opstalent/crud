@@ -4,4 +4,4 @@ services:
         arguments:
             - '@form.factory'
     opstalent.form_config_resolver.service:
-        class: 'Opstalent\CrudBundle\Service\FormConfigResolver'
+        class: 'Opstalent\CrudBundle\Resolver\FormConfigResolver'

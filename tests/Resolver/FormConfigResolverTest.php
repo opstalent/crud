@@ -1,15 +1,17 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests\Service;
+namespace Opstalent\CrudBundle\Tests\Resolver;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\Mapping\Column;
 use Opstalent\CrudBundle\Exception\AnnotationNotDefinedException;
 use Opstalent\CrudBundle\Exception\ClassNotFoundException;
+use Opstalent\CrudBundle\Exception\TypeNotAllowedException;
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
-use Opstalent\CrudBundle\Service\FormConfigResolver;
+use Opstalent\CrudBundle\Resolver\FormConfigResolver;
 use Opstalent\CrudBundle\Tests\Entity\EntityWithAnnotation;
+use Opstalent\CrudBundle\Tests\Entity\EntityWithFakeColumnType;
 use Opstalent\CrudBundle\Tests\Entity\EntityWithoutColumn;
 use PHPUnit\Framework\TestCase;
 
@@ -92,6 +94,16 @@ class FormConfigResolverTest extends TestCase
         foreach ($resolver->getFields() as $field) {
             $this->assertInstanceOf(Field::class, $field);
         }
+    }
+
+    /**
+     * @group FormConfigResolver
+     * @test
+     */
+    public function throwTypeNotAllowedExceptionWhenEntityHaveUnsupportedColumnType()
+    {
+        $this->expectException(TypeNotAllowedException::class);
+        $resolver = $this->service->resolve('addable', EntityWithFakeColumnType::class);
     }
 
 }
