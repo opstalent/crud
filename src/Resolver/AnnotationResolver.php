@@ -41,7 +41,7 @@ class AnnotationResolver
     /**
      * @return AnnotationReader
      */
-    protected function getReader()
+    protected static function getReader()
     {
         if (!self::$reader) {
             self::$reader = new AnnotationReader();
@@ -54,7 +54,7 @@ class AnnotationResolver
      * @param string $className
      * @return ReflectionClass move to class
      */
-    protected function getReflectionClass(string $className): ReflectionClass
+    protected static function getReflectionClass(string $className): ReflectionClass
     {
         if (!class_exists($className)) {
             throw new ClassNotFoundException();
@@ -73,7 +73,7 @@ class AnnotationResolver
      * @param ReflectionProperty $property
      * @return null|object move to class
      */
-    protected function getColumnAnnotation(ReflectionProperty $property)
+    protected static function getColumnAnnotation(ReflectionProperty $property)
     {
         /* @var Column */
         $column = self::getReader()->getPropertyAnnotation($property, Column::class);
