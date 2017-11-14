@@ -11,6 +11,11 @@ use Opstalent\CrudBundle\Exception\ClassNotFoundException;
 use ReflectionClass;
 use ReflectionProperty;
 
+/**
+ * Class AnnotationResolver
+ * @author Szymon Kunowski <szymon.kunowski@gmail.com>
+ * @package Opstalent\CrudBundle
+ */
 class AnnotationResolver
 {
     static protected  $reader;
