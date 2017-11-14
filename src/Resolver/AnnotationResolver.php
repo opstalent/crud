@@ -24,12 +24,16 @@ class AnnotationResolver
      * @param string $className
      * @return array
      */
-    public static function resolve(string $className): array
+    public static function resolve(string $action, string $className): array
     {
         $reflection = self::getReflectionClass($className);
         $properties = [];
         foreach ($reflection->getProperties() as $property) {
-            if (self::getReader()->getPropertyAnnotation($property, Field::class)) {
+            $field = self::getReader()->getPropertyAnnotation($property, Field::class);
+            if (
+                $field
+                && $field->isAction($action)
+            ) {
                 $column = self::getColumnAnnotation($property);
                 $properties[$property->getName()] = $column->type;
             }

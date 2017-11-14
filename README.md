@@ -102,6 +102,8 @@ All other actions will raise ``Doctrine\Common\Annotations\AnnotationException``
 API Reference
 -------------
 [FormFactoryService](Resources/doc/FormFactoryService.md)
+[FormConfigResolver](Resources/doc/FormConfigResolver.md)
+[AnnotationResolver](Resources/doc/AnnotationResolver.md)
 
 License
 -------------
