@@ -18,13 +18,13 @@ use ReflectionProperty;
  */
 class AnnotationResolver
 {
-    static protected  $reader;
+    protected static $reader;
 
     /**
      * @param string $className
      * @return array
      */
-    static public function resolve(string $className): array
+    public static function resolve(string $className): array
     {
         $reflection = self::getReflectionClass($className);
         $properties = [];

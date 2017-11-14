@@ -12,6 +12,9 @@ use Throwable;
  */
 class AnnotationNotDefinedException extends LogicException implements Exception
 {
+    const DEFAULT_MESSAGE = "Annotation not defined properly. 
+        Please check documentation on https://github.com/opstalent/crud/blob/master/README.md";
+
     /**
      * AnnotationNotDefinedException constructor.
      * @param string $message
@@ -19,11 +22,10 @@ class AnnotationNotDefinedException extends LogicException implements Exception
      * @param Throwable|null $previous
      */
     public function __construct(
-        $message = "Annotation not defined properly. Please check documentation on https://github.com/opstalent/crud/blob/master/README.md",
+        $message = self::DEFAULT_MESSAGE,
         $code = 0,
         Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct($message, $code, $previous);
     }
 }
