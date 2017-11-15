@@ -14,9 +14,9 @@ with [`Field`](../../src/Model/Field.php) annotation and have supported Doctrine
  - ``protected function resolveFields(string $action, string $className): array``
  
     Create Array of fields based on action and class passed. 
-    This Function reads (ussing [`AnnotationResolver`](../../src/Resolver/AnnotationResolver.php)) every property of class 
+    This Function reads (using [`AnnotationResolver`](../../src/Resolver/AnnotationResolver.php)) every property of class 
     thats have [`Field`](../../src/Annotation/Field.php) Annotation with passed action. 
-    Next Cheks if Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) Annotation exist and ads
+    Next Check if Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) Annotation exist and ads
     
  - ``protected function buildField(string $name, string $type): FieldModel``
  
@@ -24,4 +24,4 @@ with [`Field`](../../src/Model/Field.php) annotation and have supported Doctrine
 
  - ``protected function resolveType(string $type): string``
 
-    Resolve doctrin collumn type string to Symfony [`Type`](http://symfony.com/doc/current/reference/forms/types.html) className.
+    Resolve Doctrine column type string to Symfony [`type`](http://symfony.com/doc/current/reference/forms/types.html) className.

@@ -9,7 +9,7 @@ use Opstalent\CrudBundle\Exception\ClassNotFoundException;
 use Opstalent\CrudBundle\Exception\TypeNotAllowedException;
 use Opstalent\CrudBundle\Model\Field;
 use Opstalent\CrudBundle\Model\Form;
-use Opstalent\CrudBundle\Resolver\FormConfigResolver;
+use Opstalent\CrudBundle\FormConfigResolver;
 use Opstalent\CrudBundle\Tests\Entity\EntityWithAnnotation;
 use Opstalent\CrudBundle\Tests\Entity\EntityWithFakeColumnType;
 use Opstalent\CrudBundle\Tests\Entity\EntityWithoutColumn;
@@ -63,7 +63,7 @@ class FormConfigResolverTest extends TestCase
      * @group FormConfigResolver
      * @test
      */
-    public function getsFormModelWhenUseClassAnotatedWithFormAnnotation()
+    public function getsFormModelWhenUseClassAnnotatedWithFormAnnotation()
     {
         $column = new Column(); // Needed to Use Doctrine Mapping annotations inside
         $resolver = $this->service->resolve('addable', EntityWithAnnotation::class);
@@ -73,7 +73,7 @@ class FormConfigResolverTest extends TestCase
     /**
      * @group FormConfigResolver
      * @test
-     * @depends getsFormModelWhenUseClassAnotatedWithFormAnnotation
+     * @depends getsFormModelWhenUseClassAnnotatedWithFormAnnotation
      */
     public function formModelContainsAllFieldsDefinedByFieldAnnotation()
     {

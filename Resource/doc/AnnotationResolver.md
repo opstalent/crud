@@ -1,13 +1,13 @@
 AnnotationResolver
 ==================
 
-Provide array of field properies that have a annotation [`Field`](../../src/Annotation/Field.php) passed action and annotation [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html)
+Provide array of field properties that have a annotation [`Field`](../../src/Annotation/Field.php) passed action and annotation [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html)
 
 ``AnnotationResolver`` provide methods:
 
  - ``public static function resolve(string $action, string $className): array``
  
-    Provide array of field properies that have a annotation [`Field`](../../src/Annotation/Field.php) passed action and annotation [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html).
+    Provide array of field properties that have a annotation [`Field`](../../src/Annotation/Field.php) passed action and annotation [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html).
     This function uses getReflectionClass and getColumnAnnotation to read all needed annotations from class.
     
  - ``protected static function getReader()y``
@@ -20,4 +20,7 @@ Provide array of field properies that have a annotation [`Field`](../../src/Anno
 
  - ``protected static function getColumnAnnotation(ReflectionProperty $property)``
 
-    this function check if passed ReflectionProperty have Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) annotation. then return this annotation.
+    This function check if passed ReflectionProperty have Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) annotation. then return this annotation.
+
+ - ``protected static function isEntity(ReflectionClass $reflection, string $action): bool``
+    This function check if ReflectionClass have Entity Annotation and passed action.

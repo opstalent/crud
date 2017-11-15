@@ -1,7 +1,7 @@
 services:
     opstalent.form_factory.service:
-        class: 'Opstalent\CrudBundle\Service\FormFactory'
+        class: 'Opstalent\CrudBundle\FormFactory'
         arguments:
             - '@form.factory'
     opstalent.form_config_resolver.service:
-        class: 'Opstalent\CrudBundle\Resolver\FormConfigResolver'
+        class: 'Opstalent\CrudBundle\FormConfigResolver'

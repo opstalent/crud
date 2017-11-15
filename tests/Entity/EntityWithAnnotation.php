@@ -23,4 +23,10 @@ class EntityWithAnnotation
      * @Column(type="integer")
      */
     protected $number;
+
+    /**
+     * @Field(actions={"editable"})
+     * @Column(type="integer")
+     */
+    protected $skip;
 }

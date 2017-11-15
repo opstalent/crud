@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Service;
+namespace Opstalent\CrudBundle;
 
 use Opstalent\CrudBundle\Exception\MethodNotAllowedException;
 use Opstalent\CrudBundle\Model\Field;

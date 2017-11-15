@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Resolver;
+namespace Opstalent\CrudBundle;
 
 use Opstalent\CrudBundle\Exception\TypeNotAllowedException;
 use Opstalent\CrudBundle\Model\Field as FieldModel;

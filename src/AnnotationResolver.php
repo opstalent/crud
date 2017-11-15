@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Resolver;
+namespace Opstalent\CrudBundle;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\Mapping\Column;
@@ -18,23 +18,31 @@ use ReflectionProperty;
  */
 class AnnotationResolver
 {
+    /**
+     * @var AnnotationReader
+     */
     protected static $reader;
 
     /**
+     * @param string $action
      * @param string $className
      * @return array
      */
     public static function resolve(string $action, string $className): array
     {
         $reflection = static::getReflectionClass($className);
+        if (!static::isEntity($reflection, $action)) {
+            throw new AnnotationNotDefinedException();
+        }
         $properties = [];
         foreach ($reflection->getProperties() as $property) {
             $field = static::getReader()->getPropertyAnnotation($property, Field::class);
-            if ($field && $field->isAction($action)
-            ) {
-                $column = static::getColumnAnnotation($property);
-                $properties[$property->getName()] = $column->type;
+            if (!$field || !$field->isAction($action)) {
+                continue;
             }
+
+            $column = static::getColumnAnnotation($property);
+            $properties[$property->getName()] = $column->type;
         }
 
         return $properties;
@@ -62,11 +70,7 @@ class AnnotationResolver
             throw new ClassNotFoundException();
         }
 
-        $reflection = new ReflectionClass(new $className);
-
-        if (!static::getReader()->getClassAnnotation($reflection, Entity::class)) {
-            throw new AnnotationNotDefinedException();
-        }
+        $reflection = new ReflectionClass($className);
 
         return $reflection;
     }
@@ -84,5 +88,17 @@ class AnnotationResolver
         }
 
         return $column;
+    }
+
+    /**
+     * @param ReflectionClass $reflection
+     * @param string $action
+     * @return bool
+     */
+    protected static function isEntity(ReflectionClass $reflection, string $action): bool
+    {
+        $entityAnnotation = static::getReader()->getClassAnnotation($reflection, Entity::class);
+
+        return $entityAnnotation && $entityAnnotation->isAction($action);
     }
 }
