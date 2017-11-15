@@ -16,6 +16,9 @@ use Symfony\Component\Form\AbstractType;
  */
 class FormConfigResolver
 {
+    /**
+     * @var array
+     */
     protected $formTypes = [
         'string' => TextType::class,
         'text' => TextType::class,

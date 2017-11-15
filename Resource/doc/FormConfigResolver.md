@@ -1,27 +1,31 @@
 FormConfigResolver
 ==================
 
-Create [`Form`](../../src/Model/Form.php) Model based on action and className. 
-This Resolver uses AnnotationResolver to get all fields from class that are annotated 
-with [`Field`](../../src/Model/Field.php) annotation and have supported Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) type.
+Creates [`Form`](../../src/Model/Form.php) Model based on action and class name. 
+This Resolver uses AnnotationResolver to get all fields from class that is annotated 
+with [`Field`](../../src/Model/Field.php) annotation and has supported Doctrine 
+[`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) type.
 
-``FormConfigResolver`` provide methods:
+``FormConfigResolver`` provides following methods:
 
  - ``public function resolve(string $action, string $className): Form``
  
-    Create [`Form`](../../src/Model/Form.php) model with resolved fields.
+    Creates [`Form`](../../src/Model/Form.php) model with resolved fields.
     
  - ``protected function resolveFields(string $action, string $className): array``
  
-    Create Array of fields based on action and class passed. 
-    This Function reads (using [`AnnotationResolver`](../../src/Resolver/AnnotationResolver.php)) every property of class 
-    thats have [`Field`](../../src/Annotation/Field.php) Annotation with passed action. 
-    Next Check if Doctrine [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) Annotation exist and ads
+    Creates array of fields based on action and class passed. 
+    This Function reads every property of class 
+    thats have [`Field`](../../src/Annotation/Field.php) annotation with passed action. 
+    Next it checks if Doctrine 
+    [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) 
+    annotation exist.
     
  - ``protected function buildField(string $name, string $type): FieldModel``
  
-    Create Form Model for specific type.
+    Creates [`Form`](../../src/Model/Form.php) model for specific type.
 
  - ``protected function resolveType(string $type): string``
 
-    Resolve Doctrine column type string to Symfony [`type`](http://symfony.com/doc/current/reference/forms/types.html) className.
+    Resolves Doctrine column type string to Symfony 
+    [`type`](http://symfony.com/doc/current/reference/forms/types.html) class name.

@@ -27,6 +27,7 @@ class AnnotationResolver
      * @param string $action
      * @param string $className
      * @return array
+     * @throws AnnotationNotDefinedException
      */
     public static function resolve(string $action, string $className): array
     {
@@ -41,8 +42,7 @@ class AnnotationResolver
                 continue;
             }
 
-            $column = static::getColumnAnnotation($property);
-            $properties[$property->getName()] = $column->type;
+            $properties[$property->getName()] = static::resolveType($property);
         }
 
         return $properties;
@@ -62,7 +62,8 @@ class AnnotationResolver
 
     /**
      * @param string $className
-     * @return ReflectionClass move to class
+     * @return ReflectionClass
+     * @throws ClassNotFoundException
      */
     protected static function getReflectionClass(string $className): ReflectionClass
     {
@@ -77,9 +78,10 @@ class AnnotationResolver
 
     /**
      * @param ReflectionProperty $property
-     * @return null|object move to class
+     * @return string
+     * @throws AnnotationNotDefinedException
      */
-    protected static function getColumnAnnotation(ReflectionProperty $property)
+    protected static function resolveType(ReflectionProperty $property):string
     {
         /* @var Column */
         $column = static::getReader()->getPropertyAnnotation($property, Column::class);
@@ -87,7 +89,7 @@ class AnnotationResolver
             throw new AnnotationNotDefinedException("Column Annotation not defined.");
         }
 
-        return $column;
+        return $column->type;
     }
 
     /**
