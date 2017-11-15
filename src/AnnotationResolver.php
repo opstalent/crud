@@ -37,7 +37,7 @@ class AnnotationResolver
         $properties = [];
         foreach ($reflection->getProperties() as $property) {
             $field = static::getReader()->getPropertyAnnotation($property, Field::class);
-            if (!$field || !$field->Opstalent\CrudBundle\FormFactory$action)) {
+            if (!$field || !$field->isValidAction($action)) {
                 continue;
             }
 
@@ -99,6 +99,6 @@ class AnnotationResolver
     {
         $entityAnnotation = static::getReader()->getClassAnnotation($reflection, Entity::class);
 
-        return $entityAnnotation && $entityAnnotation->Opstalent\CrudBundle\FormFactory$action);
+        return $entityAnnotation && $entityAnnotation->isValidAction($action);
     }
 }
