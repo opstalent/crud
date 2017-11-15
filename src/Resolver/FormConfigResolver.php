@@ -43,12 +43,9 @@ class FormConfigResolver
      */
     protected function resolveFields(string $action, string $className): array
     {
-        $fields = [];
-        foreach (AnnotationResolver::resolve($action, $className) as $key => $type) {
-            $fields[] = $this->buildField($key, $type);
-        }
+        $fields = AnnotationResolver::resolve($action, $className);
 
-        return $fields;
+        return array_map([$this, 'buildField'], array_keys($fields), $fields);
     }
 
     /**
