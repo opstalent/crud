@@ -53,7 +53,7 @@ trait ActionTrait
      * @param string $action
      * @return bool
      */
-    public function isAction(string $action): bool
+    public function isValidAction(string $action): bool
     {
         return in_array($action, $this->getActions());
     }
