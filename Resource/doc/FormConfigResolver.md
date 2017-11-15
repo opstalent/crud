@@ -2,7 +2,7 @@ FormConfigResolver
 ==================
 
 Creates [`Form`](../../src/Model/Form.php) Model based on action and class name. 
-This Resolver uses AnnotationResolver to get all fields from class that is annotated 
+This Resolver uses ``AnnotationResolver`` to get all fields from class that is annotated 
 with [`Field`](../../src/Model/Field.php) annotation and has supported Doctrine 
 [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html) type.
 

@@ -71,9 +71,7 @@ class AnnotationResolver
             throw new ClassNotFoundException();
         }
 
-        $reflection = new ReflectionClass($className);
-
-        return $reflection;
+        return new ReflectionClass($className);
     }
 
     /**

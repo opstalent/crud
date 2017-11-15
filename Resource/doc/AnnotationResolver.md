@@ -12,7 +12,8 @@ Provide array of field properties that have a annotation
     Provides array of field properties that have a annotation 
     [`Field`](../../src/Annotation/Field.php) passed action and annotation 
     [`Column`](http://www.doctrine-project.org/api/orm/2.3/class-Doctrine.ORM.Mapping.Column.html).
-    This function uses getReflectionClass and getColumnAnnotation to read all needed annotations from class.
+    This function uses ``getReflectionClass`` and ``getColumnAnnotation`` 
+    methods to read all needed annotations from class.
     
  - ``protected static function getReader(): AnnotationReader``
  
@@ -21,9 +22,9 @@ Provide array of field properties that have a annotation
     
  - ``protected static function getReflectionClass(string $className): ReflectionClass``
  
-    This function checks if $className exist and have proper 
-    [`Entity`](../../src/Annotation/Entity.php) Annotation. 
-    Then returns ReflectionClass.
+    This function checks if ``$className`` exists and has proper 
+    [`Entity`](../../src/Annotation/Entity.php) annotation. 
+    Then returns ``ReflectionClass``.
 
  - ``protected static function resolveType(ReflectionProperty $property):string``
 
@@ -32,4 +33,5 @@ Provide array of field properties that have a annotation
     Then returns this annotation type.
 
  - ``protected static function isEntity(ReflectionClass $reflection, string $action): bool``
-    This function checks if ``ReflectionClass`` have Entity Annotation and passed action.
+    This function checks if passed ``ReflectionClass`` has 
+    [`Entity`](../../src/Annotation/Entity.php) annotation and passes action.
