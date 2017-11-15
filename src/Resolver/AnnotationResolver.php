@@ -26,13 +26,13 @@ class AnnotationResolver
      */
     public static function resolve(string $action, string $className): array
     {
-        $reflection = self::getReflectionClass($className);
+        $reflection = static::getReflectionClass($className);
         $properties = [];
         foreach ($reflection->getProperties() as $property) {
-            $field = self::getReader()->getPropertyAnnotation($property, Field::class);
+            $field = static::getReader()->getPropertyAnnotation($property, Field::class);
             if ($field && $field->isAction($action)
             ) {
-                $column = self::getColumnAnnotation($property);
+                $column = static::getColumnAnnotation($property);
                 $properties[$property->getName()] = $column->type;
             }
         }
@@ -45,11 +45,11 @@ class AnnotationResolver
      */
     protected static function getReader()
     {
-        if (!self::$reader) {
-            self::$reader = new AnnotationReader();
+        if (!static::$reader) {
+            static::$reader = new AnnotationReader();
         }
 
-        return self::$reader;
+        return static::$reader;
     }
 
     /**
@@ -64,7 +64,7 @@ class AnnotationResolver
 
         $reflection = new ReflectionClass(new $className);
 
-        if (!self::getReader()->getClassAnnotation($reflection, Entity::class)) {
+        if (!static::getReader()->getClassAnnotation($reflection, Entity::class)) {
             throw new AnnotationNotDefinedException();
         }
 
@@ -78,7 +78,7 @@ class AnnotationResolver
     protected static function getColumnAnnotation(ReflectionProperty $property)
     {
         /* @var Column */
-        $column = self::getReader()->getPropertyAnnotation($property, Column::class);
+        $column = static::getReader()->getPropertyAnnotation($property, Column::class);
         if (!$column) {
             throw new AnnotationNotDefinedException("Column Annotation not defined.");
         }
