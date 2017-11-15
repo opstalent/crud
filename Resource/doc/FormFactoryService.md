@@ -8,7 +8,7 @@ public function __construct(FormFactoryInterface $formFactory)
 Converts [`Form`](../../src/Model/Form.php) Model (with array of [`Field`](../../src/Model/Field.php) Model) into fully qualified Symfony Form.
 ``FormFactoryService`` is registered under name ``opstalent.form_factory.service``
 
-``FormFactoryService`` provide methods:
+``FormFactoryService`` provides following methods:
 
  - ``public function createForm(Form $formModel): FormInterface``
  

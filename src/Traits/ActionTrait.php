@@ -48,4 +48,13 @@ trait ActionTrait
         }
         return $this;
     }
+
+    /**
+     * @param string $action
+     * @return bool
+     */
+    public function isValidAction(string $action): bool
+    {
+        return in_array($action, $this->getActions());
+    }
 }

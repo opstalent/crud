@@ -2,8 +2,8 @@
 
 namespace Opstalent\CrudBundle\Model;
 
-use Opstalent\CrudBundle\Traits\AvailableActionTrait;
 use Opstalent\CrudBundle\Exception\ActionUnavailableException;
+use Opstalent\CrudBundle\Traits\AvailableActionTrait;
 
 /**
  * Class Form
@@ -85,7 +85,9 @@ class Form
      */
     public function setFields(array $fields): Form
     {
-        $this->fields = $fields;
+        foreach ($fields as $field) {
+            $this->addField($field);
+        }
         return $this;
     }
 

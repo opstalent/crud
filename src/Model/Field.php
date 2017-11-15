@@ -2,8 +2,8 @@
 
 namespace Opstalent\CrudBundle\Model;
 
-use Opstalent\CrudBundle\Traits\FieldTypeTrait;
 use Opstalent\CrudBundle\Exception\TypeNotAllowedException;
+use Opstalent\CrudBundle\Traits\FieldTypeTrait;
 
 /**
  * Class Field
@@ -17,7 +17,7 @@ class Field
     /**
      * @var string
      */
-    protected $name;
+    protected $name = '';
 
     /**
      * @var string

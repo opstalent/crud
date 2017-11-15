@@ -32,7 +32,7 @@ class OpstalentCrudExtensionTest extends AbstractExtensionTestCase
         $this->load();
         $this->assertContainerBuilderHasService(
             'opstalent.form_factory.service',
-            'Opstalent\CrudBundle\Service\FormFactory'
+            'Opstalent\CrudBundle\FormFactory'
         );
     }
 }
