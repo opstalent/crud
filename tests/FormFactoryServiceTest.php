@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests\Service;
+namespace Opstalent\CrudBundle\Tests;
 
 use Opstalent\CrudBundle\Exception\ActionUnavailableException;
 use Opstalent\CrudBundle\Exception\MethodNotAllowedException;

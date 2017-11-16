@@ -1,6 +1,6 @@
 <?php
 
-namespace Opstalent\CrudBundle\Tests\Resolver;
+namespace Opstalent\CrudBundle\Tests;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\Mapping\Column;
@@ -33,10 +33,7 @@ class FormConfigResolverTest extends TestCase
      */
     public function setUpFormFactory()
     {
-        $reader = $this->getMockBuilder(AnnotationReader::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $this->service = new FormConfigResolver($reader);
+        $this->service = new FormConfigResolver();
     }
 
     /**

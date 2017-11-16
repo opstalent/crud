@@ -41,6 +41,7 @@ class FormConfigResolver
     }
 
     /**
+     * @param string $action
      * @param string $className
      * @return array
      */
