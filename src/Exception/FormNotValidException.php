@@ -13,6 +13,9 @@ use Throwable;
  */
 class FormNotValidException extends LogicException implements Exception
 {
+    /**
+     * @var Form
+     */
     protected $form;
 
     /**
