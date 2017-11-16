@@ -5,3 +5,10 @@ services:
             - '@form.factory'
     opstalent.form_config_resolver.service:
         class: 'Opstalent\CrudBundle\FormConfigResolver'
+
+    opstalent.form.event.listener:
+        class: 'Opstalent\CrudBundle\FormEventListener'
+        arguments:
+          - '@doctrine.orm.entity_manager'
+        tags:
+          - { name: kernel.event_listener, event: form.post_bind }
