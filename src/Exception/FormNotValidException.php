@@ -20,6 +20,7 @@ class FormNotValidException extends LogicException implements Exception
 
     /**
      * ActionUnavailableException constructor.
+     * @param Form $form
      * @param string $message
      * @param int $code
      * @param Throwable|null $previous
