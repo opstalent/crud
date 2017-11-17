@@ -15,9 +15,12 @@ and save data to database via
 
  - ``public static function getSubscribedEvents(): array``
  
-    Function needed by EventSubscriberInterface to register class as listener. 
-    Provides array of events that FormEventListener listen to.
+    Function needed by 
+    [`EventSubscriberInterface`](https://github.com/symfony/symfony/blob/master/src/Symfony/Component/EventDispatcher/EventSubscriberInterface.php) 
+    to register class as listener. 
+    Provides array of events that [`FormEventListener`](../../src/FormEventListener.php) listen to.
     
  - ``public function saveData(FormEvent $event)``
  
-    Checks if Form provided by FormEvent is valid and save data to database.
+    Checks if [`Form`](https://github.com/symfony/form/blob/master/Form.php) provided by 
+    [`FormEvent`](https://github.com/symfony/form/blob/master/FormEvent.php) is valid and save data to database.
