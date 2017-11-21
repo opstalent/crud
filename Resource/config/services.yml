@@ -12,3 +12,10 @@ services:
           - '@doctrine.orm.entity_manager'
         tags:
           - { name: kernel.event_listener, event: form.post_bind }
+    opstalent.form.request.listener:
+        class: 'Opstalent\CrudBundle\RequestListener'
+        arguments:
+          - '@opstalent.form_config_resolver.service'
+          - '@opstalent.form_factory.service'
+        tags:
+          - { name: kernel.event_listener, event: kernel.request }
