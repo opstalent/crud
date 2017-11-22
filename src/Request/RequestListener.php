@@ -2,13 +2,13 @@
 
 namespace Opstalent\CrudBundle\Request;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpFoundation\Request;
 use Opstalent\CrudBundle\FormConfigResolver;
 use Opstalent\CrudBundle\FormFactory;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * Class RequestListener
@@ -50,7 +50,7 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * @param GetResponseEvent $event
-     * @return FormInterface|void
+     * @return FormInterface|null
      */
     public function handleForm(GetResponseEvent $event)
     {
@@ -59,12 +59,10 @@ class RequestListener implements EventSubscriberInterface
         }
 
         $request = $event->getRequest();
-        /**
-         * @var CrudRequestInterface $crud
-         */
+
         $crud = $this->resolveCrudRequest($request);
         if (!$crud) {
-            return;
+            return null;
         }
 
         $formModel = $this->resolver->resolve($crud->getAction(), $crud->getClassName());
@@ -76,9 +74,10 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * @param Request $request
-     * @return null|CrudRequestInterface
+     * @return CrudRequestInterface|null
+     * @throws /Exception
      */
-    protected function resolveCrudRequest(Request $request): ?AbstractCrudRequest
+    protected function resolveCrudRequest(Request $request): ?CrudRequestInterface
     {
         $crud = $request->attributes->get('crudBundle.handler');
         return $crud;
