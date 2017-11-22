@@ -13,7 +13,7 @@ services:
         tags:
           - { name: kernel.event_listener, event: form.post_bind }
     opstalent.form.request.listener:
-        class: 'Opstalent\CrudBundle\RequestListener'
+        class: 'Opstalent\CrudBundle\Request\RequestListener'
         arguments:
           - '@opstalent.form_config_resolver.service'
           - '@opstalent.form_factory.service'
