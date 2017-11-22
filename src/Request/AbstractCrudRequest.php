@@ -3,7 +3,7 @@
 namespace Opstalent\CrudBundle\Request;
 
 /**
- * Class CrudRequestInterface
+ * Class AbstractCrudRequest
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
  * @package Opstalent\CrudBundle
  */
