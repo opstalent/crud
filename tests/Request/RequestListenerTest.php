@@ -2,8 +2,8 @@
 
 namespace Opstalent\CrudBundle\Tests;
 
-use Opstalent\CrudBundle\CrudHandlingInterface;
-use Opstalent\CrudBundle\RequestListener;
+use Opstalent\CrudBundle\Request\CrudRequestInterface;
+use Opstalent\CrudBundle\Request\RequestListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -24,7 +24,7 @@ class RequestListenerTest extends TestCase
     /**
      * @param bool $master
      * @param Request $request
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return GetResponseEvent
      */
     public function getResponseEventMock(bool $master = false, Request $request)
     {
@@ -38,7 +38,7 @@ class RequestListenerTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return FormConfigResolver
      */
     public function getFormConfigResolverMock()
     {
@@ -49,7 +49,7 @@ class RequestListenerTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return FormFactory
      */
     public function getFormFactoryMock()
     {
@@ -60,13 +60,13 @@ class RequestListenerTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return Request
      */
     public function getRequestMock()
     {
         $requestMock =  $this
             ->getMockBuilder(Request::class)
-            ->setConstructorArgs([[], [], [], [], [], [], null])
+            ->disableOriginalConstructor()
             ->getMock();
 
         $requestMock->query = new ParameterBag();
@@ -81,12 +81,12 @@ class RequestListenerTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return CrudRequestInterface
      */
-    public function getCrudHandlingInterfaceMock()
+    public function getCrudRequestInterfaceMock()
     {
         $crudHandlingInterfaceMock = $this
-            ->getMockBuilder(CrudHandlingInterface::class)
+            ->getMockBuilder(CrudRequestInterface::class)
             ->getMock();
         $crudHandlingInterfaceMock
             ->method('getAction')
@@ -113,10 +113,10 @@ class RequestListenerTest extends TestCase
      * @group RequestListener
      * @test
      */
-    public function handleFormReturnsFormInterface()
+    public function handlesFormReturnsFormInterface()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getCrudHandlingInterfaceMock()));
+        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getCrudRequestInterfaceMock()));
         $this->assertInstanceOf(FormInterface::class, $result);
     }
 
@@ -134,10 +134,10 @@ class RequestListenerTest extends TestCase
      * @group RequestListener
      * @test
      */
-    public function handleFormReturnsVoidForChildrenRequest()
+    public function handlesFormReturnsVoidForChildrenRequest()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getCrudHandlingInterfaceMock()));
+        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getCrudRequestInterfaceMock()));
         $this->assertNull($result);
     }
 
@@ -145,7 +145,7 @@ class RequestListenerTest extends TestCase
      * @group RequestListener
      * @test
      */
-    public function handleFormReturnsVoidForRequestWithoutCrudInterface()
+    public function handlesFormReturnsVoidForRequestWithoutCrudInterface()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
         $result = $listener->handleForm($this->getResponseEventMock(true, $this->getRequestMock()));

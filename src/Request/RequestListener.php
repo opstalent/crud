@@ -1,12 +1,14 @@
 <?php
 
-namespace Opstalent\CrudBundle;
+namespace Opstalent\CrudBundle\Request;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpFoundation\Request;
+use Opstalent\CrudBundle\FormConfigResolver;
+use Opstalent\CrudBundle\FormFactory;
 
 /**
  * Class RequestListener
@@ -42,9 +44,7 @@ class RequestListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::REQUEST => [
-                ['handleForm', -255],
-            ],
+            KernelEvents::REQUEST => ['handleForm', -255]
         ];
     }
 
@@ -60,7 +60,7 @@ class RequestListener implements EventSubscriberInterface
 
         $request = $event->getRequest();
         /**
-         * @var CrudHandlingInterface $crud
+         * @var CrudRequestInterface $crud
          */
         if (!$crud = $this->resolveCrudRequest($request)) {
             return;
@@ -75,11 +75,11 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * @param Request $request
-     * @return mixed|null|CrudHandlingInterface
+     * @return mixed|null|CrudRequestInterface
      */
-    protected function resolveCrudRequest(Request $request)
+    protected function resolveCrudRequest(Request $request): ?CrudRequestInterface
     {
-        $crud = $request->attributes->get('crud');
-        return $crud instanceof CrudHandlingInterface ? $crud : null;
+        $crud = $request->attributes->get('crudBundle.handler');
+        return $crud;
     }
 }

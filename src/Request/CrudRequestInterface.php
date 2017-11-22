@@ -1,13 +1,13 @@
 <?php
 
-namespace Opstalent\CrudBundle;
+namespace Opstalent\CrudBundle\Request;
 
 /**
- * Class CrudHandlingInterface
+ * Class CrudRequestInterface
  * @author Szymon Kunowski <szymon.kunowski@gmail.com>
  * @package Opstalent\CrudBundle
  */
-abstract class CrudHandlingInterface
+abstract class CrudRequestInterface
 {
     /**
      * @var string
