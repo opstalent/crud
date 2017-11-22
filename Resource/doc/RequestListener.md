@@ -6,7 +6,7 @@ public function __construct(FormConfigResolver $resolver, FormFactory $factory)
 ```
 
 Listens on every request. Checks if it master request and has attribute crud of type 
-[`AbstractCrudRequest`](../../src/Request/AbstractCrudRequest.php). Then uses [`FormConfigResolver`](FormConfigResolver.md)
+[`CrudRequestInterface`](../../src/Request/CrudRequestInterface.php). Then uses [`FormConfigResolver`](FormConfigResolver.md)
 and [`FormFactory`](FormFactoryService.md) to creates and handle form.
 
 ``RequestListener`` is registered under name ``opstalent.form.request.listener``
@@ -22,6 +22,6 @@ and [`FormFactory`](FormFactoryService.md) to creates and handle form.
     
  - ``public function handleForm(GetResponseEvent $event)``
  
-    This function takes request with provided [`AbstractCrudRequest`](../../src/Request/AbstractCrudRequest.php) 
+    This function takes request with provided [`CrudRequestInterface`](../../src/Request/CrudRequestInterface.php) 
     in attributes, then creates [`Form`](https://github.com/symfony/form/blob/master/Form.php) 
     and use request data to submit form.

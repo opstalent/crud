@@ -2,7 +2,7 @@
 
 namespace Opstalent\CrudBundle\Tests;
 
-use Opstalent\CrudBundle\Request\AbstractCrudRequest;
+use Opstalent\CrudBundle\Request\CrudRequestInterface;
 use Opstalent\CrudBundle\Request\RequestListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormInterface;
@@ -86,7 +86,7 @@ class RequestListenerTest extends TestCase
     public function getAbstractCrudRequestMock()
     {
         $crudHandlingInterfaceMock = $this
-            ->getMockBuilder(AbstractCrudRequest::class)
+            ->getMockBuilder(CrudRequestInterface::class)
             ->getMock();
         $crudHandlingInterfaceMock
             ->method('getAction')
