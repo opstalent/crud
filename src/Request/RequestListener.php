@@ -62,7 +62,8 @@ class RequestListener implements EventSubscriberInterface
         /**
          * @var CrudRequestInterface $crud
          */
-        if (!$crud = $this->resolveCrudRequest($request)) {
+        $crud = $this->resolveCrudRequest($request);
+        if (!$crud) {
             return;
         }
 
@@ -75,9 +76,9 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * @param Request $request
-     * @return mixed|null|CrudRequestInterface
+     * @return null|CrudRequestInterface
      */
-    protected function resolveCrudRequest(Request $request): ?CrudRequestInterface
+    protected function resolveCrudRequest(Request $request): ?AbstractCrudRequest
     {
         $crud = $request->attributes->get('crudBundle.handler');
         return $crud;

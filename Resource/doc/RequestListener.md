@@ -24,4 +24,4 @@ and [`FormFactory`](FormFactoryService.md) to creates and handle form.
  
     This function takes request with provided [`CrudHandlingInterface`](../../src/CrudHandlingInterface.php) 
     in attributes, then creates [`Form`](https://github.com/symfony/form/blob/master/Form.php) 
-    and use request data to subbmit form.
+    and use request data to submit form.
