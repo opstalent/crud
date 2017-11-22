@@ -2,7 +2,7 @@
 
 namespace Opstalent\CrudBundle\Tests;
 
-use Opstalent\CrudBundle\Request\CrudRequestInterface;
+use Opstalent\CrudBundle\Request\AbstractCrudRequest;
 use Opstalent\CrudBundle\Request\RequestListener;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Form\FormInterface;
@@ -81,12 +81,12 @@ class RequestListenerTest extends TestCase
     }
 
     /**
-     * @return CrudRequestInterface
+     * @return AbstractCrudRequest
      */
-    public function getCrudRequestInterfaceMock()
+    public function getAbstractCrudRequestMock()
     {
         $crudHandlingInterfaceMock = $this
-            ->getMockBuilder(CrudRequestInterface::class)
+            ->getMockBuilder(AbstractCrudRequest::class)
             ->getMock();
         $crudHandlingInterfaceMock
             ->method('getAction')
@@ -116,7 +116,7 @@ class RequestListenerTest extends TestCase
     public function handlesFormReturnsFormInterface()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getCrudRequestInterfaceMock()));
+        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getAbstractCrudRequestMock()));
         $this->assertInstanceOf(FormInterface::class, $result);
     }
 
@@ -137,7 +137,7 @@ class RequestListenerTest extends TestCase
     public function handlesFormReturnsVoidForChildrenRequest()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getCrudRequestInterfaceMock()));
+        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getAbstractCrudRequestMock()));
         $this->assertNull($result);
     }
 
