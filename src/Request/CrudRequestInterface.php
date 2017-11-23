@@ -1,6 +1,7 @@
 <?php
 
 namespace Opstalent\CrudBundle\Request;
+
 use Symfony\Component\Form\FormInterface;
 
 /**
