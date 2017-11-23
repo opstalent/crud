@@ -68,8 +68,7 @@ class RequestListener implements EventSubscriberInterface
         $formModel = $this->resolver->resolve($crud->getAction(), $crud->getClassName());
         $form = $this->factory->createForm($formModel);
         $form->handleRequest($request);
-
-        return $form;
+        $crud->setForm($form);
     }
 
     /**
