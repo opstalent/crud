@@ -1,6 +1,7 @@
 <?php
 
 namespace Opstalent\CrudBundle\Request;
+use Symfony\Component\Form\FormInterface;
 
 /**
  * Class CrudRequestInterface
@@ -18,4 +19,10 @@ interface CrudRequestInterface
      * @return string
      */
     public function getClassName(): string;
+
+    /**
+     * @param FormInterface $form
+     * @return $this
+     */
+    public function setForm(FormInterface $form): CrudRequestInterface;
 }
