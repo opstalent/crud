@@ -61,24 +61,25 @@ class RequestListenerTest extends TestCase
 
     /**
      * @param bool $attributes
-     * @return \PHPUnit_Framework_MockObject_MockObject|Request
+     * @return Request
      */
-    public function getRequestMock(bool $attributes = false)
+    public function getRequest(bool $attributes = false)
     {
-        $crudHandlingInterfaceMock = $this
-            ->getMockBuilder(CrudRequestInterface::class)
-            ->getMock();
-        $crudHandlingInterfaceMock
-            ->method('getAction')
-            ->willReturn('addable');
-
-        $crudHandlingInterfaceMock
-            ->method('getClassName')
-            ->willReturn(EntityWithAnnotation::class);
-
-        $requestMock = new Request();
+        $request = new Request();
 
         if ($attributes) {
+
+            $crudHandlingInterfaceMock = $this
+                ->getMockBuilder(CrudRequestInterface::class)
+                ->getMock();
+            $crudHandlingInterfaceMock
+                ->method('getAction')
+                ->willReturn('addable');
+
+            $crudHandlingInterfaceMock
+                ->method('getClassName')
+                ->willReturn(EntityWithAnnotation::class);
+
             $attributesMock = $this
                 ->getMockBuilder(ParameterBag::class)
                 ->disableOriginalConstructor()
@@ -87,10 +88,10 @@ class RequestListenerTest extends TestCase
                 ->method('get')
                 ->willReturn($crudHandlingInterfaceMock);
 
-            $requestMock->attributes = $attributesMock;
+            $request->attributes = $attributesMock;
         }
 
-        return $requestMock;
+        return $request;
     }
 
     /**
@@ -109,7 +110,7 @@ class RequestListenerTest extends TestCase
             ->expects($createFormSpy = $this->once())
             ->method('createForm');
 
-        $request = $this->getRequestMock(true);
+        $request = $this->getRequest(true);
 
         $listener = new RequestListener($resolver, $factory);
         $result = $listener->handleForm($this->getResponseEventMock(true, $request));
@@ -134,7 +135,7 @@ class RequestListenerTest extends TestCase
     public function handlesFormReturnsVoidForChildrenRequest()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getRequestMock(true)));
+        $result = $listener->handleForm($this->getResponseEventMock(false, $this->getRequest(true)));
         $this->assertNull($result);
     }
 
@@ -145,7 +146,7 @@ class RequestListenerTest extends TestCase
     public function handlesFormReturnsVoidForRequestWithoutCrudInterface()
     {
         $listener = new RequestListener($this->getFormConfigResolverMock(), $this->getFormFactoryMock());
-        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getRequestMock(false)));
+        $result = $listener->handleForm($this->getResponseEventMock(true, $this->getRequest(false)));
         $this->assertNull($result);
     }
 
