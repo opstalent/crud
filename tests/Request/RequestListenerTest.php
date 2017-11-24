@@ -68,30 +68,36 @@ class RequestListenerTest extends TestCase
         $request = new Request();
 
         if ($attributes) {
-
-            $crudHandlingInterfaceMock = $this
-                ->getMockBuilder(CrudRequestInterface::class)
-                ->getMock();
-            $crudHandlingInterfaceMock
-                ->method('getAction')
-                ->willReturn('addable');
-
-            $crudHandlingInterfaceMock
-                ->method('getClassName')
-                ->willReturn(EntityWithAnnotation::class);
-
-            $attributesMock = $this
-                ->getMockBuilder(ParameterBag::class)
-                ->disableOriginalConstructor()
-                ->getMock();
-            $attributesMock
-                ->method('get')
-                ->willReturn($crudHandlingInterfaceMock);
-
-            $request->attributes = $attributesMock;
+            $request->attributes = $this->getAttributeMock();
         }
 
         return $request;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    public function getAttributeMock()
+    {
+        $crudHandlingInterfaceMock = $this
+            ->getMockBuilder(CrudRequestInterface::class)
+            ->getMock();
+        $crudHandlingInterfaceMock
+            ->method('getAction')
+            ->willReturn('addable');
+
+        $crudHandlingInterfaceMock
+            ->method('getClassName')
+            ->willReturn(EntityWithAnnotation::class);
+
+        $attributesMock = $this
+            ->getMockBuilder(ParameterBag::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $attributesMock
+            ->method('get')
+            ->willReturn($crudHandlingInterfaceMock);
+        return $attributesMock;
     }
 
     /**
