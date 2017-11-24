@@ -50,7 +50,7 @@ class RequestListener implements EventSubscriberInterface
 
     /**
      * @param GetResponseEvent $event
-     * @return FormInterface|null
+     * @return null
      */
     public function handleForm(GetResponseEvent $event)
     {
