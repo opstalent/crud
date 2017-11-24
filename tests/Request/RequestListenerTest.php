@@ -76,17 +76,17 @@ class RequestListenerTest extends TestCase
             ->method('getClassName')
             ->willReturn(EntityWithAnnotation::class);
 
-        $attributesMock = $this
-            ->getMockBuilder(ParameterBag::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $attributesMock
-            ->method('get')
-            ->willReturn($crudHandlingInterfaceMock);
-
         $requestMock = new Request();
 
         if ($attributes) {
+            $attributesMock = $this
+                ->getMockBuilder(ParameterBag::class)
+                ->disableOriginalConstructor()
+                ->getMock();
+            $attributesMock
+                ->method('get')
+                ->willReturn($crudHandlingInterfaceMock);
+
             $requestMock->attributes = $attributesMock;
         }
 
